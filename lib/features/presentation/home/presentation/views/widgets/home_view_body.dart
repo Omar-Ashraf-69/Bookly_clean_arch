@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/styles.dart';
+import '../../../../../../core/utils/styles.dart';
 import 'best_seller_listview_widget.dart';
 import 'books_listview_widget.dart';
 import 'home_view_customer_appbar.dart';

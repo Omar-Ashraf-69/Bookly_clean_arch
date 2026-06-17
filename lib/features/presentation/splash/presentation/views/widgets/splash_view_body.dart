@@ -1,5 +1,5 @@
-import '../../../../../core/functions/func.dart';
-import '../../../../../core/utils/assets.dart';
+import '../../../../../../core/functions/func.dart';
+import '../../../../../../core/utils/assets.dart';
 import 'animated_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';

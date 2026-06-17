@@ -1,4 +1,4 @@
-import '../../../../../core/utils/styles.dart';
+import '../../../../../../core/utils/styles.dart';
 import 'you_can_also_like_listview_widget.dart';
 import 'package:flutter/material.dart';
 

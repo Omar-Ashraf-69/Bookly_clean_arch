@@ -1,7 +1,7 @@
 import 'package:bookly_clean_arch/core/utils/app_routers.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../../core/utils/assets.dart';
+import '../../../../../../core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

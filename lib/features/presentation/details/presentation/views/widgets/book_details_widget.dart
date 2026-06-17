@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 
-import '../../../../../core/utils/assets.dart';
-import '../../../../../core/utils/styles.dart';
+import '../../../../../../core/utils/assets.dart';
+import '../../../../../../core/utils/styles.dart';
 
 class BookDetailsWidget extends StatelessWidget {
   const BookDetailsWidget({super.key});

@@ -1,7 +1,7 @@
 import 'package:bookly_clean_arch/core/utils/styles.dart';
-import 'package:bookly_clean_arch/features/home/presentation/views/widgets/best_seller_listview_widget.dart';
-import 'package:bookly_clean_arch/features/search/presentation/view/widgets/custom_search_text_field.dart';
-import 'package:bookly_clean_arch/features/search/presentation/view/widgets/search_view_custom_appbar.dart';
+import 'package:bookly_clean_arch/features/presentation/home/presentation/views/widgets/best_seller_listview_widget.dart';
+import 'package:bookly_clean_arch/features/presentation/search/presentation/view/widgets/custom_search_text_field.dart';
+import 'package:bookly_clean_arch/features/presentation/search/presentation/view/widgets/search_view_custom_appbar.dart';
 import 'package:flutter/material.dart';
 
 class SearchView extends StatelessWidget {
