@@ -1,11 +1,16 @@
 
+import 'package:bookly_clean_arch/core/entities/book_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import 'constants.dart';
 import 'core/utils/app_routers.dart';
-void main() {
+void main() async{
+  await Hive.initFlutter();
+  Hive.registerAdapter(BookEntityAdapter());
+  await Hive.openBox<BookEntity>(kNewestBox);
   runApp(MyApp());
 }
 
