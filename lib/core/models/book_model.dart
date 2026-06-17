@@ -8,13 +8,22 @@ class BookModel extends BookEntity {
     required super.id,
     required super.title,
     required super.author,
-    required super.rating, this.subtitle, required this.authors,
+    required super.rating,
+    required super.image,
+    this.subtitle,
+    required this.authors,
   });
 
   final String? subtitle;
   final List<Author> authors;
 
   factory BookModel.fromJson(Map<String, dynamic> json) {
+
+    final authorsJson = json[ApiKey.authors] as List<dynamic>?;
+
+    final authorsList = authorsJson == null
+        ? <Author>[]
+        : authorsJson.map((x) => Author.fromJson(x)).toList();
     return BookModel(
       id: json[ApiKey.id],
       title: json[ApiKey.title],
@@ -26,11 +35,13 @@ class BookModel extends BookEntity {
             ),
       rating: json[ApiKey.rating] == null
           ? null
-          : Rating.fromJson(json[ApiKey.rating]).average, 
-          author: json[ApiKey.authors] == null
-          ? ''
-          : json[ApiKey.authors]!.map((x) => Author.fromJson(x))[0],
-          
+          : Rating.fromJson(json[ApiKey.rating]).average,
+      author: authorsList.isNotEmpty ? authorsList.first.name : '',
+      image: json[ApiKey.image],
+
+      // author: json[ApiKey.authors] == null
+      //     ? ''
+      //     : json[ApiKey.authors]!.map((x) => Author.fromJson(x)),
     );
   }
 }

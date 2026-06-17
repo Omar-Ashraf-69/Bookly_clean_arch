@@ -1,4 +1,12 @@
+import 'package:bookly_clean_arch/core/database/api/dio_consumer.dart';
+import 'package:bookly_clean_arch/features/home/data/datasource/local_data_source.dart';
+import 'package:bookly_clean_arch/features/home/data/datasource/remote_data_source.dart';
+import 'package:bookly_clean_arch/features/home/data/repos/home_repo_impl.dart';
+import 'package:bookly_clean_arch/features/home/domain/use_cases/get_books_use_case.dart';
+import 'package:bookly_clean_arch/features/home/presentation/cubit/home_cubit.dart';
 import 'package:bookly_clean_arch/features/search/presentation/view/search_view.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/details/presentation/views/details_view.dart';
@@ -19,7 +27,22 @@ abstract class AppRouters {
           return const SplashView();
         },
       ),
-      GoRoute(path: kHomeView, builder: (context, state) => const HomeView()),
+      GoRoute(
+        path: kHomeView,
+        builder: (context, state) => BlocProvider(
+          create: (context) => HomeCubit(
+            getBooksUseCase: GetBooksUseCase(
+              repo: GetBooksRepoImpl(
+                homeLocalDataSource: HomeLocalDataSourceImpl(),
+                homeRemoteDataSource: HomeRemoteDataSourceImpl(
+                  api: DioConsumer(dio: Dio()),
+                ),
+              ),
+            ),
+          )..getBooks(),
+          child: const HomeView(),
+        ),
+      ),
       GoRoute(
         path: kDetailsView,
         builder: (context, state) => const DetailsView(),

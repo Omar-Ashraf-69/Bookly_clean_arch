@@ -1,11 +1,13 @@
-import 'package:bookly_clean_arch/core/utils/assets.dart';
+import 'package:bookly_clean_arch/core/entities/book_entity.dart';
 import 'package:bookly_clean_arch/core/utils/styles.dart';
+import 'package:bookly_clean_arch/core/widgets/book_details_text_widgets.dart';
+import 'package:bookly_clean_arch/core/widgets/custom_book_cover.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 
 class BestSellerListItemWidget extends StatelessWidget {
-  const BestSellerListItemWidget({super.key});
-
+  const BestSellerListItemWidget({super.key, required this.book});
+  final BookEntity book;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -13,41 +15,46 @@ class BestSellerListItemWidget extends StatelessWidget {
       child: SizedBox(
         width: double.infinity,
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           children: [
-            Image.asset(
-              Assets.imagesCover,
-              width: 80.w,
-              // width: MediaQuery.of(context).size.width / 3,
+            SizedBox(
+              height: MediaQuery.sizeOf(context).height / 6,
+              child: AspectRatio(
+                aspectRatio: 2.2 / 3,
+                child: CustomBookCoverWidget(img: book.image),
+              ),
             ),
+
             SizedBox(width: 18),
             Expanded(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Harry Potter and the Goblet of Fire ",
+                    book.title,
                     style: AppStyles.interRegular20,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
-                    "J.K. Rowling",
+                    book.author,
                     style: AppStyles.montserratMedium14.copyWith(
                       color: Colors.white.withValues(alpha: 0.7),
                     ),
                   ),
                   Row(
                     children: [
-                      Text("19.99\$", style: AppStyles.montserratBold20),
+                      PriceTextWidget(book: book),
                       Spacer(),
                       Row(
                         children: [
                           Icon(Icons.star, color: Colors.amber, size: 18.w),
                           SizedBox(width: 4),
-                          Text("4,8", style: AppStyles.montserratMedium16),
+                          RatingTextWidget(book: book),
                           SizedBox(width: 4),
-                          Text("(4321)", style: AppStyles.montserratRegular14),
+                          ReviewsTextWidget(book: book),
                         ],
                       ),
                     ],

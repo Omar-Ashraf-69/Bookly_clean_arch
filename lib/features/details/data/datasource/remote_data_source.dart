@@ -25,7 +25,7 @@ class DetailsRemoteDataSourceImpl extends DetailsRemoteDataSource {
     try {
       final response = await api.get(
         EndPoints.similarBooks(params.id),
-        quearyParams: {ApiKey.apiKey: kApiKey, ApiKey.number: 15},
+        quearyParams: {ApiKey.apiKey: kApiKey, },
       );
       final List data = response[ApiKey.similarBooks];
 
