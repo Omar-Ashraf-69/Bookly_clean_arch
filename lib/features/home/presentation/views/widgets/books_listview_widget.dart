@@ -23,27 +23,21 @@ class BooksListViewWidget extends StatelessWidget {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    GoRouter.of(context).push(AppRouters.kDetailsView);
+                    GoRouter.of(
+                      context,
+                    ).push(AppRouters.kDetailsView, extra: state.books[index]);
                   },
-                  child: Container(
-                    padding: EdgeInsets.only(right: 16),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(24),
-                    ),
-                    child: AspectRatio(
-                      aspectRatio: 3 / 4,
+                  child: AspectRatio(
+                    aspectRatio: 3 / 4,
+                    child: Container(
+                      padding: EdgeInsets.only(right: 16),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(24),
+                      ),
                       child: ClipRRect(
                         borderRadius: BorderRadiusGeometry.circular(24),
                         child: FancyShimmerImage(
-                          boxFit: BoxFit.cover,
-                          boxDecoration: BoxDecoration(
-                            borderRadius: BorderRadiusGeometry.circular(24),
-                          ),
                           imageUrl: state.books[index].image ?? "",
-                          shimmerBackColor: Colors.grey[80],
-                          shimmerDuration: Duration(seconds: 2),
-                          shimmerBaseColor: Colors.grey[300],
-
                           errorWidget: Image.asset(
                             Assets.imagesCover, // safest option
                             fit: BoxFit.cover,

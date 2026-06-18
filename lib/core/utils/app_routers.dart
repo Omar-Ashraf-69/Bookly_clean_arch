@@ -1,4 +1,8 @@
 import 'package:bookly_clean_arch/core/database/api/dio_consumer.dart';
+import 'package:bookly_clean_arch/core/entities/book_entity.dart';
+import 'package:bookly_clean_arch/features/details/data/datasource/remote_data_source.dart';
+import 'package:bookly_clean_arch/features/details/data/repos/get_similar_books_repo_impl.dart';
+import 'package:bookly_clean_arch/features/details/presentation/cubit/cubit/get_similar_books_cubit.dart';
 import 'package:bookly_clean_arch/features/home/data/datasource/local_data_source.dart';
 import 'package:bookly_clean_arch/features/home/data/datasource/remote_data_source.dart';
 import 'package:bookly_clean_arch/features/home/data/repos/home_repo_impl.dart';
@@ -45,7 +49,19 @@ abstract class AppRouters {
       ),
       GoRoute(
         path: kDetailsView,
-        builder: (context, state) => const DetailsView(),
+        builder: (context, state) {
+          final book = state.extra as BookEntity;
+          return BlocProvider(
+            create: (context) => SimilarBooksCubit(
+              repo: GetSimilarBooksRepoImpl(
+                detailsRemoteDataSource: DetailsRemoteDataSourceImpl(
+                  api: DioConsumer(dio: Dio()),
+                ),
+              ),
+            ),
+            child: DetailsView(book: book),
+          );
+        },
       ),
       GoRoute(
         path: kSearchView,

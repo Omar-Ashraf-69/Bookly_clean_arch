@@ -25,7 +25,6 @@ class BestSellerListItemWidget extends StatelessWidget {
                 child: CustomBookCoverWidget(img: book.image),
               ),
             ),
-
             SizedBox(width: 18),
             Expanded(
               child: Column(

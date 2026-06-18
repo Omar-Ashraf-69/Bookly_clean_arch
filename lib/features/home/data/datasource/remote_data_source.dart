@@ -17,7 +17,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
       final response = await api.get(
         EndPoints.searchBooks,
         quearyParams: {
-          ApiKey.query: "Python",
+          ApiKey.query: "C++",
           ApiKey.apiKey: kApiKey,
         },
       );

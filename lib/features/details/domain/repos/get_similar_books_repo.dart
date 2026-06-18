@@ -4,5 +4,7 @@ import 'package:bookly_clean_arch/features/details/data/models/similar_book_mode
 import 'package:dartz/dartz.dart';
 
 abstract class GetSimilarBooksRepo {
-  Future<Either<Failure,List<SimilarBookModel>>> getSimilarBooks({SimilarBookParams params});
+  Future<Either<Failure, List<SimilarBookModel>>> getSimilarBooks({
+    required SimilarBookParams params,
+  });
 }
