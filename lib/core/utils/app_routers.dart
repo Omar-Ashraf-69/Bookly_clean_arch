@@ -8,6 +8,9 @@ import 'package:bookly_clean_arch/features/home/data/datasource/remote_data_sour
 import 'package:bookly_clean_arch/features/home/data/repos/home_repo_impl.dart';
 import 'package:bookly_clean_arch/features/home/domain/use_cases/get_books_use_case.dart';
 import 'package:bookly_clean_arch/features/home/presentation/cubit/home_cubit.dart';
+import 'package:bookly_clean_arch/features/search/data/datasource/remote_data_source.dart';
+import 'package:bookly_clean_arch/features/search/data/repos/search_books_repo_impl.dart';
+import 'package:bookly_clean_arch/features/search/presentation/cubit/search_cubit.dart';
 import 'package:bookly_clean_arch/features/search/presentation/view/search_view.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -65,7 +68,16 @@ abstract class AppRouters {
       ),
       GoRoute(
         path: kSearchView,
-        builder: (context, state) => const SearchView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => SearchCubit(
+            repo: SearchBooksRepoImpl(
+              searchRemoteDataSource: SearchRemoteDataSourceImpl(
+                api: DioConsumer(dio: Dio()),
+              ),
+            ),
+          ),
+          child: const SearchView(),
+        ),
       ),
     ],
   );

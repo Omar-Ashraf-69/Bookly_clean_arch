@@ -1,4 +1,3 @@
-
 import 'package:bookly_clean_arch/core/utils/assets.dart';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
@@ -15,10 +14,6 @@ class CustomBookCoverWidget extends StatelessWidget {
       child: FancyShimmerImage(
         height: MediaQuery.of(context).size.height / 3,
         width: MediaQuery.of(context).size.height / 4,
-        boxFit: BoxFit.cover,
-        boxDecoration: BoxDecoration(
-          borderRadius: BorderRadiusGeometry.circular(24),
-        ),
         imageUrl: img ?? "",
         errorWidget: Image.asset(
           Assets.imagesCover, // safest option
