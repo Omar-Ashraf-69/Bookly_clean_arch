@@ -16,7 +16,7 @@ class CustomBookCoverWidget extends StatelessWidget {
         width: MediaQuery.of(context).size.height / 4,
         imageUrl: img ?? "",
         errorWidget: Image.asset(
-          Assets.imagesCover, // safest option
+          Assets.images404Error, // safest option
           fit: BoxFit.cover,
         ),
       ),

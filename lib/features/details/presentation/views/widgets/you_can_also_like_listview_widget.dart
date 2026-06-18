@@ -38,7 +38,7 @@ class YouCanAlsoLikeListViewWidget extends StatelessWidget {
                         borderRadius: BorderRadiusGeometry.circular(20),
                         child: FancyShimmerImage(
                           imageUrl: books[index].image ?? "",
-                          errorWidget: Image.asset(Assets.imagesCover),
+                          errorWidget: Image.asset(Assets.images404Error),
                         ),
                       ),
                     ),

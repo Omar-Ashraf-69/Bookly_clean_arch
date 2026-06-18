@@ -39,7 +39,7 @@ class BooksListViewWidget extends StatelessWidget {
                         child: FancyShimmerImage(
                           imageUrl: state.books[index].image ?? "",
                           errorWidget: Image.asset(
-                            Assets.imagesCover, // safest option
+                            Assets.images404Error, // safest option
                             fit: BoxFit.cover,
                           ),
                         ),

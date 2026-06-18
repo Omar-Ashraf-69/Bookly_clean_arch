@@ -11,6 +11,9 @@ class CustomSearchTextField extends StatelessWidget {
     return TextField(
       controller: context.read<SearchCubit>().searchText,
       onChanged: (value) {
+        //context.read<SearchCubit>().searchBooks();
+      },
+      onSubmitted: (value) {
         context.read<SearchCubit>().searchBooks();
       },
       decoration: InputDecoration(
